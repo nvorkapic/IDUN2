@@ -70,18 +70,18 @@ namespace IDUN2
             IntervalsList.ItemsSource = MeasurementsList.SelectedItems;
         }
 
-        public List<Control> AllChildren(DependencyObject parent)
-        {
-            var _List = new List<Control> { };
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
-            {
-                var _Child = VisualTreeHelper.GetChild(parent, i);
-                if (_Child is Control)
-                    _List.Add(_Child as Control);
-                _List.AddRange(AllChildren(_Child));
-            }
-            return _List;
-        }
+        //public List<Control> AllChildren(DependencyObject parent)
+        //{
+        //    var _List = new List<Control> { };
+        //    for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+        //    {
+        //        var _Child = VisualTreeHelper.GetChild(parent, i);
+        //        if (_Child is Control)
+        //            _List.Add(_Child as Control);
+        //        _List.AddRange(AllChildren(_Child));
+        //    }
+        //    return _List;
+        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -98,30 +98,11 @@ namespace IDUN2
             {
                 item.ThresholdEnabled = true;
 
-
-                var _ListView = ThresholdList as ListView;
-                foreach (var _ListViewItem in _ListView.Items)
-                {
-                    var _Container = _ListView.ItemContainerGenerator.ContainerFromItem(_ListViewItem);
-                    var _Children = AllChildren(_Container);
-                    var _Name = "maxTresh";
-                    var _Control = (TextBox)_Children.First(c => c.Name == _Name);
-                    item.ThresholdMax = double.Parse(_Control.Text);
-                }
-                foreach (var _ListViewItem in _ListView.Items)
-                {
-                    var _Container = _ListView.ItemContainerGenerator.ContainerFromItem(_ListViewItem);
-                    var _Children = AllChildren(_Container);
-                    var _Name = "minTresh";
-                    var _Control = (TextBox)_Children.First(c => c.Name == _Name);
-                    item.ThresholdMin = double.Parse(_Control.Text);
-                }
-
-                //TextBox tbMax = FindName("maxTresh") as TextBox;
-                //item.ThresholdMax=double.Parse(tbMax.Text);
+                //TextBox tbmin = new TextBox();
+                //tbmin = ThresholdList.FindName("minTresh") as TextBox;
+                //item.ThresholdMin = double.Parse(tbmin.Text);
             }
-
-
+   
 
             foreach (SetupConfiguration item in ThresholdList.Items)
             {
