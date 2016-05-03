@@ -29,18 +29,18 @@ namespace IDUN2
 
         private void onLoadMainDisplay(object sender, RoutedEventArgs e)
         {
-           if ((Application.Current as IDUN2.App).Initialization)
-            {
-                if ((Application.Current as IDUN2.App).Configuration)
-                {
-                    Frame.Navigate(typeof(StartPage));
-                }
+           //if ((Application.Current as IDUN2.App).Initialization)
+           // {
+           //     if ((Application.Current as IDUN2.App).Configuration)
+           //     {
+           //         Frame.Navigate(typeof(StartPage));
+           //     }
                 Frame.Navigate(typeof(Configuration));
-            }
-           else
-            {
-                Frame.Navigate(typeof(Initialization));
-            }
+           // }
+           //else
+           // {
+           //     Frame.Navigate(typeof(Initialization));
+           // }
             
         }
     }

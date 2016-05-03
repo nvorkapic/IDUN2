@@ -92,11 +92,11 @@ namespace IDUN2
                 ConfigList.Add(new SetupConfiguration { Measurement = item.Measurement });
             }
 
-
-
             foreach (SetupConfiguration item in ThresholdList.SelectedItems)
             {
                 item.ThresholdEnabled = true;
+
+              
 
                 //TextBox tbmin = new TextBox();
                 //tbmin = ThresholdList.FindName("minTresh") as TextBox;
