@@ -1,5 +1,7 @@
-﻿using System;
+﻿using IDUN2.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,6 +24,12 @@ namespace IDUN2
     /// </summary>
     sealed partial class App : Application
     {
+        public List<SetupInitialization> SetupInit = new List<SetupInitialization>();
+        public List<SetupConfiguration> SetupConfig = new List<SetupConfiguration>();
+
+        public bool Initialization;
+        public bool Configuration;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().

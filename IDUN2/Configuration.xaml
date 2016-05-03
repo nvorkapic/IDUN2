@@ -1,0 +1,121 @@
+﻿<Page
+    x:Class="IDUN2.Configuration"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IDUN2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <StackPanel>
+                <TextBlock FontSize="35">CONFIGURATION</TextBlock>
+                <TextBlock FontWeight="Bold">Measurements: </TextBlock>
+                <ListView x:Name="MeasurementsList" IsMultiSelectCheckBoxEnabled="True" SelectionMode="Multiple">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Measurement}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <TextBlock FontWeight="Bold">Threshold:</TextBlock>
+                <ListView x:Name="ThresholdList" IsMultiSelectCheckBoxEnabled="True" SelectionMode="Multiple">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="ThreshEnabled" Grid.Column="0" Padding="10">Threshold Enabled for</TextBlock>
+                                <TextBlock Grid.Column="1" Padding="10" Text="{Binding Measurement}"></TextBlock>
+                                <TextBlock Grid.Column="2" Padding="10">Set Threshold [min / max]:</TextBlock>
+                                <TextBox x:Name="minTresh" Grid.Column="3" Padding="10"></TextBox>
+                                <TextBox x:Name="maxTresh" Grid.Column="4" Padding="10"></TextBox>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <TextBlock FontWeight="Bold">Interval Settings:</TextBlock>
+                <ListView x:Name="IntervalsList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Measurement}"></TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton x:Name="IO1" Content="default" IsChecked="True"></RadioButton>
+                                    <RadioButton x:Name="IO2" Content="custom"></RadioButton>
+                                    <TextBox Text="{Binding IInterval}"></TextBox>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <TextBlock FontWeight="Bold">Reporting:</TextBlock>
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Grid.Column="0" GroupName="Reporting" Content="Simple Report" IsChecked="True" x:Name="SRRButton" ></RadioButton>
+                        <StackPanel Grid.Column="1" x:Name="ReportsForSimple">
+                            <RadioButton x:Name="SRO1" Content="Quick Report without Service Request"  IsChecked="True"></RadioButton>
+                            <RadioButton x:Name="SRO2" Content="Quick Report with Service Request"></RadioButton>
+                            <RadioButton x:Name="SRO3" Content="Fault Report"></RadioButton>
+                        </StackPanel>
+                    </Grid>
+
+                    <RadioButton GroupName="Reporting" Content="Advanced Report" x:Name="ARRButton"></RadioButton>
+
+                    <StackPanel x:Name="AdvancedR" Visibility="Collapsed">
+                        <ListView x:Name="AdvancedRList">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Measurement}"></TextBlock>
+                                        <StackPanel Grid.Column="1">
+                                            <RadioButton x:Name="ARO1" Content="Quick Report without Service Request" IsChecked="True"></RadioButton>
+                                            <RadioButton x:Name="ARO2" Content="Quick Report with Service Request"></RadioButton>
+                                            <RadioButton x:Name="ARO3" Content="Fault Report"></RadioButton>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+                <TextBlock FontWeight="Bold">Measurement Density:</TextBlock>
+                <ListView x:Name="MeasurementsDensityList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Measurement}"></TextBlock>
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton x:Name="MDO1" Content="default" IsChecked="True"></RadioButton>
+                                    <RadioButton x:Name="MDO2" Content="custom"></RadioButton>
+                                    <TextBox Text="{Binding MdensityCustom}"></TextBox>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                        
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+                <Button HorizontalAlignment="Right" Click="Button_Click">SAVE</Button>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+   
+</Page>
